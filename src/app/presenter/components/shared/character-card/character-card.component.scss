@@ -1,3 +1,5 @@
+@import 'src/assets/scss/_mixins.scss';
+
 .character__card{
   box-shadow: none;
   &:hover .charecter__card_title {
@@ -47,3 +49,17 @@
   min-height: 10em;
 }
 
+
+
+
+
+@include breakpoint($breakpoint-large) {
+  .mat-mdc-card-header{
+    display: contents;
+  }
+  .charecter__header_image {
+    margin-top: -.5em;
+    margin-bottom: 3em;
+    margin-left: 23%;
+  }
+}

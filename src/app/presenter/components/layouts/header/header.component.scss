@@ -1,3 +1,5 @@
+@import 'src/assets/scss/_mixins.scss';
+
 .header__container {
   line-height: 0.5em;
   background-color: #2d2727;
@@ -139,4 +141,12 @@
   &:hover{
     opacity: 1 ;
   }
+}
+
+@include breakpoint($breakpoint-large) {
+  .header__container {
+  gap: 10px;
+
+  }
+
 }

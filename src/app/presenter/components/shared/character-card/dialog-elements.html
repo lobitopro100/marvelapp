@@ -12,7 +12,8 @@
 </div>
 
 <div mat-dialog-actions>
-  <div class="dialig__button button__1" (click)="addFavorite(comics)" [ngClass]="comics.isFavotite ? 'dialig__button-add' : ''">
+  <div class="dialig__button button__1" (click)="addFavorite(comics)"
+    [ngClass]="comics.isFavotite ? 'dialig__button-add' : ''">
     <!-- btn-favourites-default -->
     <img width="35" height="35"
       [src]="'assets/icon/btn-favourites-' + (comics.isFavotite ? 'primary' : 'default') + '.png'" alt="">
@@ -25,6 +26,8 @@
 </div>
 <!-- mat-dialog-close -->
 <style>
+
+
   .mat-mdc-dialog-actions {
     margin: 0;
     padding: 0;
@@ -70,8 +73,16 @@
 
   }
 
-  .dialig__button-add{
+  .dialig__button-add {
     background: #3D3332 !important;
-    color: red!important;
+    color: red !important;
+  }
+  @media (max-width: 992px) {
+    .dialig__title {
+      display: flow !important;
+    }
+    .dialig__dialog{
+    width: 73vw;
+}
   }
 </style>

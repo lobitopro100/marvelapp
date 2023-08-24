@@ -19,17 +19,16 @@ export class CharacterCardComponent {
   relatedComicsList: any[] = [];
   showFullSubtitle: boolean = false;
 
-  constructor(
-    public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog) {}
 
   ngOnInit(): void {
+    this.imageSource = this.imageSource .replace(/^http:/, 'https:');
     this.obtenerNombresDeComics(this.relatedComics).subscribe(
       (nombresDeComics) => {
         this.relatedComicsList = nombresDeComics;
       }
     );
   }
-
 
   obtenerNombresDeComics(comicsData: any): Observable<string[]> {
     return new Observable<string[]>((observer) => {
@@ -39,9 +38,8 @@ export class CharacterCardComponent {
       const cantidadAObtener = 4;
 
       if (totalComics <= cantidadAObtener) {
-          nombresDeComicsAlAzar = comicsData.map((comic: any) => comic);
+        nombresDeComicsAlAzar = comicsData.map((comic: any) => comic);
       } else {
-
         const copiaComicsData = comicsData.slice();
 
         for (let i = 0; i < cantidadAObtener; i++) {
@@ -54,8 +52,8 @@ export class CharacterCardComponent {
         }
       }
 
-      if(nombresDeComicsAlAzar.length === 0){
-        nombresDeComicsAlAzar = ['No Related comics']
+      if (nombresDeComicsAlAzar.length === 0) {
+        nombresDeComicsAlAzar = ['No Related comics'];
       }
 
       observer.next(nombresDeComicsAlAzar);
@@ -64,11 +62,10 @@ export class CharacterCardComponent {
   }
   openDialog(comic: string) {
     const dialogRef = this.dialog.open(DialogElementsExampleDialog, {
-      data: { comicData: comic }
+      data: { comicData: comic },
     });
 
-    dialogRef.afterClosed().subscribe(result => {});
-
+    dialogRef.afterClosed().subscribe((result) => {});
   }
 }
 
@@ -80,24 +77,30 @@ export class DialogElementsExampleDialog {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private charaterService: CharaterService,
-    private favoritesService: FavoritesService) {}
+    private favoritesService: FavoritesService
+  ) {}
 
-  public comics = this.data.comicData
+  public comics = this.data.comicData;
 
   ngOnInit(): void {
-    this.charaterService.getComicsByUrl(this.comics.resourceURI).subscribe((data) => {
+    this.charaterService
+      .getComicsByUrl(this.comics.resourceURI)
+      .subscribe((data) => {
+        this.comics.id = data.data.results[0].id;
+        this.comics.description = data.data.results[0].description;
+        this.comics.price = data.data.results[0].prices[0].price;
+        this.comics.img =
+          data.data.results[0].thumbnail.path +
+          '.' +
+          data.data.results[0].thumbnail.extension;
 
-      this.comics.id = data.data.results[0].id
-      this.comics.description = data.data.results[0].description
-      this.comics.price = data.data.results[0].prices[0].price
-      this.comics.img = data.data.results[0].thumbnail.path +'.'+ data.data.results[0].thumbnail.extension
-
-      this.comics.isFavotite = this.favoritesService.isFavorite(this.comics.id);
-
-    });
+        this.comics.isFavotite = this.favoritesService.isFavorite(
+          this.comics.id
+        );
+      });
   }
 
-  addFavorite(comics:any){
+  addFavorite(comics: any) {
     this.favoritesService.addFavorite(comics.id, comics.name, comics.img);
     this.comics.isFavotite = this.favoritesService.isFavorite(this.comics.id);
   }

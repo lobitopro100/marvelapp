@@ -1,5 +1,7 @@
-.main {
+@import 'src/assets/scss/_mixins.scss';
 
+
+.main {
   &__navcharacter {
     display: flex;
     justify-content: space-between;
@@ -51,3 +53,15 @@
   }
 }
 
+@include breakpoint($breakpoint-small) {
+  .character__container{
+    padding: 0;
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .main {
+    &__navcharacter {
+      gap: 44px;
+    }
+  }
+}

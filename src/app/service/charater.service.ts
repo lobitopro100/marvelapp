@@ -28,7 +28,7 @@ export class CharaterService {
   }
 
   getComicsByUrl(url: string): Observable<any> {
-    const URL = `${url}?apikey=df4b969e7039be6c1c09b4c131f9eb9b&hash=c8a17b4a6b222eac73f0eac59ec177b7&ts=1`;
+    const URL = `${url.replace(/^http:/, "https:")}?apikey=df4b969e7039be6c1c09b4c131f9eb9b&hash=c8a17b4a6b222eac73f0eac59ec177b7&ts=1`;
     return this.http.get(URL);
   }
 }
