@@ -1,0 +1,49 @@
+.character__card{
+  box-shadow: none;
+  &:hover .charecter__card_title {
+    color: red;
+  }
+}
+
+.charecter__header_image {
+  width: 11em;
+  height: 11em;
+  margin-top: -2em;
+  margin-left: -2em;
+  box-shadow: 0px 13.6313877106px 33.422088623px 0px rgba(0, 0, 0, 0.04), 0px 23px 60px 0px rgba(0, 0, 0, 0.04);
+}
+.charecter__card_title{
+  margin: -1.4em 0 0.5em 0;
+  font-size: large;
+  font-weight: bold;
+}
+
+.character__ralated_commics{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+  color: rgb(112, 112, 112);
+}
+
+.character__favorite_button{
+
+  background-repeat: no-repeat;
+  background-position: left top;
+  padding-left: 0;
+  cursor: pointer;
+  transition: padding-left 0.3s, color 0.3s, background-image 0.3s;
+
+  &:hover {
+    padding-left: 30px;
+    color: red;
+    background-image: url('/assets/icon/link-arrow.png');
+
+  }
+
+}
+
+.mat-mdc-card-content:last-child {
+  padding-bottom: 16px;
+  min-height: 10em;
+}
+

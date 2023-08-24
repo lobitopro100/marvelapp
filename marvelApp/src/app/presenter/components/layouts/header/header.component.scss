@@ -1,0 +1,142 @@
+.header__container {
+  line-height: 0.5em;
+  background-color: #2d2727;
+  padding: 0 2em;
+  box-shadow: 0px 13.631387710571289px 33.422088623046875px 0px
+      rgba(0, 0, 0, 0.06),
+    0px 23px 80px 0px rgba(0, 0, 0, 0.07);
+
+  ::ng-deep {
+    .header__search {
+      margin-top: 1em;
+      .mat-icon {
+        color: #e2e2e2;
+        font-size: 30px;
+        margin-top: -0.4em;
+      }
+      .mdc-text-field--outlined .mdc-notched-outline {
+        z-index: -1;
+        background: white;
+        border-radius: 0.5em;
+      }
+      .mat-mdc-text-field-wrapper {
+        height: 3em;
+      }
+      .mat-mdc-form-field-infix {
+        padding-top: 14px;
+        width: 30em;
+      }
+    }
+  }
+}
+
+.favorito__list {
+  z-index: 2;
+  width: 100% !important;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
+  background: #2d2727e8;
+}
+
+.favorito__list div {
+  position: relative;
+  overflow: hidden;
+  height: 16em;
+  cursor: pointer;
+}
+
+.favorito__content {
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  width: 100%;
+  // height: 100%;
+  max-width: 14em;
+  color: #fff;
+  z-index: 2;
+  background: transparent;
+}
+
+.favorito__content h3 {
+  position: absolute;
+  margin: 1em;
+  bottom: 0;
+  padding: 0.2em;
+  background: #ec1d24a1;
+}
+
+.favorito__list img {
+  width: 100%;
+  height: 100%;
+}
+
+.favorito__loading{
+  height: 16em;
+  background :#D9D9D9
+}
+
+.favorito__message{
+  margin: 0;
+  color: white;
+  padding: 7px;
+  background: #ec1d24;
+  text-align: center;
+}
+
+
+.character__ralated_commics{
+  margin-bottom: 0.5em;
+  width: 100%;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: left top;
+  padding-left: 0;
+  cursor: pointer;
+  transition: padding-left 0.3s, color 0.3s, background-image 0.3s;
+
+  width: 100%;
+    position: absolute;
+    background: white;
+}
+
+.character__favorite_button{
+
+  font-size: 14px;
+  margin-bottom: 0.9em;
+  width: 88%;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: left top;
+  padding-left: 0;
+  cursor: pointer;
+  transition: padding-left 0.3s, color 0.3s, background-image 0.3s;
+
+
+  &:hover {
+    padding-left: 30px;
+    color: red;
+    background-image: url('/assets/icon/link-arrow.png');
+
+  }
+
+}
+
+.mat-mdc-card-content:last-child {
+  padding-bottom: 16px;
+  min-height: 10em;
+}
+
+
+.favorito__detail{
+  width: 100%;
+  position: absolute !important;
+  top: 0;
+  background: white;
+  z-index: 3;
+  padding: 0em 1em;
+  opacity: 0 ;
+  transition: opacity 0.3s ease-in-out;
+  &:hover{
+    opacity: 1 ;
+  }
+}

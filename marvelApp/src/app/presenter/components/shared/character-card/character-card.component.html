@@ -1,0 +1,31 @@
+<mat-card class="character__card">
+  <mat-card-header>
+    <img mat-card-avatar class="charecter__header_image" [src]="imageSource" alt="Photo of {{ characterName }}">
+    <mat-card-title class="charecter__card_title">{{ characterName | uppercase }}</mat-card-title>
+    <mat-card-subtitle>
+      <ng-container *ngIf="showFullSubtitle; else shortenedSubtitle">
+        {{subtitle != '' ? subtitle : 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sequi quaerat deserunt, placeat dolor sint fugit ipsum minima eveniet obcaecati animi deleniti, dolorem blanditiis reprehenderit qui ea. Soluta corporis voluptates fuga.Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sequi quaerat deserunt, placeat dolor sint fugit ipsum minima eveniet obcaecati animi deleniti, dolorem blanditiis reprehenderit qui ea. Soluta corporis voluptates fuga'}}
+      </ng-container>
+      <ng-template #shortenedSubtitle>
+        {{subtitle != '' ? (subtitle | slice:0:150) : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi quaerat deserunt, sint fugit minima eveniet obcaecati, dolorem reprehenderit. Soluta corporis fuga.'}}
+
+      </ng-template>
+      <div style="margin-top: 1em;">
+        <button mat-flat-button color="warn" (click)="showFullSubtitle = !showFullSubtitle">
+          {{ showFullSubtitle ? 'VIEW
+          LESS' : 'VIEW MORE' }}</button>
+      </div>
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <h3>Related comics</h3>
+    <div class="character__ralated_commics">
+      <ng-container *ngIf="relatedComicsList.length; else loading">
+        <span class="character__favorite_button" (click)="openDialog(comic)" *ngFor="let comic of relatedComicsList">{{ comic.name | json }}</span>
+      </ng-container>
+      <ng-template #loading>
+        Loading comic names...
+      </ng-template>
+    </div>
+  </mat-card-content>
+</mat-card>

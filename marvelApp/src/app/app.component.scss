@@ -1,0 +1,18 @@
+.main {
+  &__container {
+    display: flex;
+    // height: 100%;
+  }
+
+  &__content {
+    flex: 4;
+    padding: 20px;
+  }
+
+  &__favorites {
+    height: auto;
+    flex: 1;
+    padding: 20px;
+    background-color: #ebebeb;
+  }
+}

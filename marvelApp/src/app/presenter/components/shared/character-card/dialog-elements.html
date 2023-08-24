@@ -1,0 +1,77 @@
+<div mat-dialog-title class="dialig__title">
+  <img mat-dialog-close width="30" height="30" src="assets/icon/btn-close.png" alt=""
+    style="cursor: pointer; ;position: absolute; right: 1em;">
+  <img width="220" height="338" [src]="comics.img ? comics.img : 'assets/commit-default.png'" alt="">
+
+  <div mat-dialog-content class="dialig__dialog">
+    <h1 class="dialig__dialog-title">{{ comics.name | uppercase }}</h1>
+    <p style="line-height: 1.5;">
+      {{ comics.description }}
+    </p>
+  </div>
+</div>
+
+<div mat-dialog-actions>
+  <div class="dialig__button button__1" (click)="addFavorite(comics)" [ngClass]="comics.isFavotite ? 'dialig__button-add' : ''">
+    <!-- btn-favourites-default -->
+    <img width="35" height="35"
+      [src]="'assets/icon/btn-favourites-' + (comics.isFavotite ? 'primary' : 'default') + '.png'" alt="">
+    {{ comics.isFavotite ? 'ADDED TO FAVOURITES' : 'ADD TO FAVOURITE'}}
+  </div>
+  <div class="dialig__button button__2">
+    <img width="35" height="35" src="assets/icon/shopping-cart-primary.png" alt="">
+    {{ comics.price > 0 ? 'BOY FOR $'+comics.price : 'Out of Stock' }}
+  </div>
+</div>
+<!-- mat-dialog-close -->
+<style>
+  .mat-mdc-dialog-actions {
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+
+  .dialig__title {
+    display: flex !important;
+    padding: 1em !important;
+  }
+
+  .dialig__dialog {
+    width: 30em;
+
+  }
+
+  .dialig__dialog-title {
+    color: #3D3332;
+    line-height: 1;
+  }
+
+  .dialig__button {
+    width: 50%;
+    text-align: center;
+    padding: 1em;
+    flex: 1;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+
+    &.button__1 {
+      background: #F0F0F0;
+      color: #3D3332;
+    }
+
+    &.button__2 {
+      background: #DCDCDC;
+      color: red;
+    }
+
+  }
+
+  .dialig__button-add{
+    background: #3D3332 !important;
+    color: red!important;
+  }
+</style>

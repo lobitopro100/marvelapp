@@ -1,0 +1,36 @@
+<section class="main__navcharacter">
+  <div class="main__navcharacter_title">
+    <img width="40" height="40" src="assets/icon/characters.png" alt="">
+    <h1>Character</h1>
+  </div>
+
+  <mat-form-field appearance="outline" class="main__navcharacter_sortby">
+  <!-- <mat-label>Order by</mat-label> -->
+    <mat-select placeholder="Sort by"  [(ngModel)]="order" (ngModelChange)="onOrderChange()">
+      <mat-option *ngFor="let order of orderby" [value]="order.value">
+        {{order.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+</section>
+
+<section class="character__container">
+
+  <ng-container *ngIf="loadingCharater; else loading">
+    <app-character-card *ngFor="let item of dataCharacter  | paginate: { itemsPerPage: 10, currentPage: p }"
+      [characterName]="item.name" [subtitle]="item.description"
+      [imageSource]="item.thumbnail.path + '.' + item.thumbnail.extension"
+      [relatedComics]="item.comics.items"></app-character-card>
+  </ng-container>
+  <ng-template #loading >
+    <svg class="flash__animation"  *ngFor="let i of [1,2,3,4,5,6,7,8,9,10]" viewBox="0 0 680 418" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M172.603 20H673C676.866 20 680 23.134 680 27V411C680 414.866 676.866 418 673 418H26C22.134 418 19 414.866 19 411V171.163C7.01062 153.601 0 132.369 0 109.5C0 86.631 7.01062 65.3993 19 47.837V27C19 23.134 22.134 20 26 20H46.3971C64.2333 7.40137 86.0023 0 109.5 0C132.998 0 154.767 7.40137 172.603 20Z"
+        fill="#D9D9D9" />
+    </svg>
+  </ng-template>
+</section>
+<div class="character__paginacion">
+  <pagination-controls (pageChange)="p = $event" previousLabel="" nextLabel=""></pagination-controls>
+</div>

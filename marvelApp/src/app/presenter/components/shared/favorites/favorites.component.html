@@ -1,0 +1,8 @@
+<div class="main__navcharacter_title favorite__header">
+  <img width="40" height="40" src="assets/icon/favourites.png" alt="">
+  <h2 class="favorite__title">My favourites</h2>
+</div>
+
+<div style="text-align: center; display: grid; justify-content: center;">
+  <app-favorite-card *ngFor="let favotite of favorites" [title]="favotite.name" [imageSource]="favotite.urlImg" [id]="favotite.id"></app-favorite-card>
+</div>

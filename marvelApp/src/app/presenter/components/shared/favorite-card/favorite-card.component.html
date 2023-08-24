@@ -1,0 +1,10 @@
+<ng-container >
+<div>
+  <button mat-mini-fab color="accent" style="top: 1.9em;
+  right: -7.5em; background: #2d2727;" (click)="removeFavorite()">
+    <mat-icon>delete</mat-icon>
+  </button>
+</div>
+  <img width="220" [src]="imageSource" alt="" (click)="openDialog()">
+  <p style=" padding: 0 1em;">{{ title }}</p>
+</ng-container>
