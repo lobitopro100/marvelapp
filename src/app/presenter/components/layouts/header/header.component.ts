@@ -35,7 +35,11 @@ export class HeaderComponent {
   }
 
   updateData() {
+
     if (this.search !== '') {
+
+      this.loadingCharater = true;
+
       this.charaterService.getData('name', this.search).subscribe((data) => {
         this.dataCharacter = data.data.results;
 
@@ -43,6 +47,7 @@ export class HeaderComponent {
 
         this.obtenerNombresDeComics(iten.comics.items).subscribe(
           (nombresDeComics) => {
+            iten.image = (iten.thumbnail.path + '.' + iten.thumbnail.extension).replace(/^http:/, "https:");
             iten.comics = nombresDeComics;
             this.loadingCharater = true;
           }

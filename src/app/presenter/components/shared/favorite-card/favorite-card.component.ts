@@ -19,6 +19,10 @@ export class FavoriteCardComponent {
     private charaterService: CharaterService
   ) {}
 
+  ngOnInit() {
+    this.imageSource == this.imageSource.replace(/^http:/, "https:");
+  }
+
   removeFavorite() {
     this.favoritesService.removeFavoriteById(this.id);
   }

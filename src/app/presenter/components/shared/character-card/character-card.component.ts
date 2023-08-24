@@ -90,9 +90,9 @@ export class DialogElementsExampleDialog {
         this.comics.description = data.data.results[0].description;
         this.comics.price = data.data.results[0].prices[0].price;
         this.comics.img =
-          data.data.results[0].thumbnail.path +
+          (data.data.results[0].thumbnail.path +
           '.' +
-          data.data.results[0].thumbnail.extension;
+          data.data.results[0].thumbnail.extension).replace(/^http:/, "https:")
 
         this.comics.isFavotite = this.favoritesService.isFavorite(
           this.comics.id

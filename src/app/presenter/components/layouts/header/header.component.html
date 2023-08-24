@@ -26,7 +26,7 @@
 <ng-container *ngIf="loadingCharater; else loading">
   <div class="favorito__list">
     <div *ngFor="let item of dataCharacter">
-      <img [src]="item.thumbnail.path + '.' + item.thumbnail.extension" alt="">
+      <img [src]="item.image ? item.image : 'https://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg'" alt="">
       <div class="favorito__detail">
         <h3>Related comics</h3>
         <div class="character__ralated_commics">
